@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -108,6 +110,27 @@ class EnterpriseProjectServiceIntegrationTest {
                         "a contact name",
                         null
                 ));
+    }
+
+    @Test
+    public void testFindAllProjects() {
+        // given an enterprise
+
+        // and three persisted projects
+        enterpriseProjectService.newProject("p1", "p1 description", enterprise);
+        enterpriseProjectService.newProject("p3", "p3 description", enterprise);
+        enterpriseProjectService.newProject("p2", "p2 description", enterprise);
+
+        // when searching for all projects
+        List<Project> projects = enterpriseProjectService.findAllProjects();
+
+        // then the three projects are fetched
+        assertEquals(3, projects.size());
+
+        // and projects are sorted by title
+        assertEquals("p1", projects.get(0).getTitle());
+        assertEquals("p2", projects.get(1).getTitle());
+        assertEquals("p3", projects.get(2).getTitle());
 
     }
 }

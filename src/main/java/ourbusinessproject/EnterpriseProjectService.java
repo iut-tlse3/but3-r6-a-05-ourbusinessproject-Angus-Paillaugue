@@ -2,8 +2,11 @@ package ourbusinessproject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -60,5 +63,11 @@ public class EnterpriseProjectService {
 
     public Enterprise findEnterpriseById(Long enterpriseId) {
         return this.entityManager.find(Enterprise.class, enterpriseId);
+    }
+
+    public List<Project> findAllProjects() {
+        String query = "SELECT p from Project p WHERE 1=1 ORDER BY p.title";
+        TypedQuery<Project> queryObj = entityManager.createQuery(query,Project.class);
+        return queryObj.getResultList();
     }
 }
