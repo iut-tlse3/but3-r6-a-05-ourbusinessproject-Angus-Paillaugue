@@ -6,13 +6,19 @@ import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
 class ProjectTest {
 
     private Validator validator;
     private Project project;
+    @Mock
+    private Enterprise enterprise;
 
 
     @BeforeEach
@@ -23,7 +29,7 @@ class ProjectTest {
         project = new Project();
         project.setTitle("A project");
         project.setDescription("Project description");
-
+        project.setEnterprise(enterprise);
     }
 
     @Test
@@ -63,6 +69,18 @@ class ProjectTest {
 
         // when: the project has no title
         project.setTitle(null);
+
+        // then: the project is no more valid
+        assertFalse(validator.validate(project).isEmpty(),"expected one constraint violation");
+
+    }
+
+    @Test
+    @DisplayName("Test the enterprise of a project cannot null")
+    public void testProjectMustHaveAnEnterprise() {
+
+        // given : a project with no enterprise
+        project.setEnterprise(null);
 
         // then: the project is no more valid
         assertFalse(validator.validate(project).isEmpty(),"expected one constraint violation");

@@ -20,7 +20,6 @@ public class Project {
     @ManyToOne
     private Enterprise enterprise;
 
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -31,5 +30,17 @@ public class Project {
 
     public Long getId() {
         return this.id;
+    }
+
+    public Enterprise getEnterprise() {
+        return this.enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
