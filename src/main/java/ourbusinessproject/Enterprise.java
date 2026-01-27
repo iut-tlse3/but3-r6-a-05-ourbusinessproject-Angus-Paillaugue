@@ -1,12 +1,11 @@
 package ourbusinessproject;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.Collection;
 
 @Entity
 public class Enterprise {
@@ -31,6 +30,9 @@ public class Enterprise {
     @Email
     private String email;
 
+    @OneToMany(mappedBy = "enterprise")
+    private Collection<Project> roles;
+
     public void setName(String name) {
         this.name = name;
     }
@@ -45,5 +47,9 @@ public class Enterprise {
 
     public void setContactEmail(String email) {
         this.email = email;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 }
