@@ -1,9 +1,9 @@
 
 # Our Business Project - A spring boot / JPA project
 
-### NOM : DOE
-### Prénom : John
-### Groupe de TP : 
+### NOM : PAILLAUGUE
+### Prénom : Angus
+### Groupe de TP :
 - [x] 1
 
 
