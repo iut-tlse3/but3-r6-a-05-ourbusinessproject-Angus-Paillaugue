@@ -48,6 +48,8 @@ class EnterpriseProjectServiceIntegrationTest {
         assertEquals(project, foundProject);
         // and: the found project has the same enterprise as the created project
         assertEquals(enterprise, foundProject.getEnterprise());
+        // and: the enterprise has the project in its list of projects
+        assertTrue(enterprise.getProjects().contains(foundProject));
     }
 
     @Test
@@ -69,6 +71,8 @@ class EnterpriseProjectServiceIntegrationTest {
         assertEquals(project, foundProject);
         // and: the found project has the same enterprise as the created project
         assertEquals(enterprise, foundProject.getEnterprise());
+        // and: the enterprise has the project in its list of projects
+        assertTrue(enterprise.getProjects().contains(foundProject));
     }
 
     @Test

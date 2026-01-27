@@ -18,6 +18,7 @@ public class Project {
     private String description;
 
     @ManyToOne
+    @NotNull
     private Enterprise enterprise;
 
     public void setTitle(String title) {

@@ -2,9 +2,9 @@ package ourbusinessproject;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -29,12 +29,15 @@ public class Enterprise {
 
     @NotNull
     @Email
+    @NotBlank
     private String email;
 
     @OneToMany(mappedBy = "enterprise")
     private Collection<Project> projects;
 
-    public Enterprise(){}
+    public Enterprise() {
+
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -81,7 +84,7 @@ public class Enterprise {
     }
 
     public void addProject(Project project) {
-        if(this.projects == null) {
+        if (this.projects == null) {
             this.projects = new ArrayList<>();
         }
         this.projects.add(project);

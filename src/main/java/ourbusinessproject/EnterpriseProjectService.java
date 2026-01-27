@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EnterpriseProjectService {
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -54,10 +55,10 @@ public class EnterpriseProjectService {
     }
 
     public Project findProjectById(Long projectId) {
-        return entityManager.find(Project.class, projectId);
+        return this.entityManager.find(Project.class, projectId);
     }
 
     public Enterprise findEnterpriseById(Long enterpriseId) {
-        return entityManager.find(Enterprise.class, enterpriseId);
+        return this.entityManager.find(Enterprise.class, enterpriseId);
     }
 }

@@ -32,6 +32,8 @@ class EnterpriseTest {
 
         // the given enterprise is valid
         assertTrue(validator.validate(enterprise).isEmpty(), "Expected no constraint violation");
+        // and has no projects associated
+        assertNull(enterprise.getProjects());
     }
 
     @Test
