@@ -3,10 +3,11 @@ package ourbusinessproject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import jakarta.validation.ConstraintViolationException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -19,29 +20,19 @@ public class EnterpriseProjectService {
         this.entityManager = entityManager;
     }
 
-    public Project newProject(String aTitle, String aDescription) {
-        Project p = new Project();
-        p.setTitle(aTitle);
-        p.setDescription(aDescription);
-        this.entityManager.persist(p);
-        this.entityManager.flush();
-        return p;
-    }
-
+    @Transactional
     public Project newProject(String aTitle, String aDescription, Enterprise entreprise) {
-        if (entreprise == null) {
-            throw new ConstraintViolationException("Enterprise cannot be null", null);
-        }
         Project p = new Project();
         p.setTitle(aTitle);
         p.setDescription(aDescription);
         p.setEnterprise(entreprise);
-        entreprise.addProject(p);
         this.entityManager.persist(p);
         this.entityManager.flush();
+        entreprise.addProject(p);
         return p;
     }
 
+    @Transactional
     public Enterprise newEnterprise(String aName, String aDescription, String aContactName, String mail) {
         Enterprise e = new Enterprise();
         e.setName(aName);
@@ -66,7 +57,7 @@ public class EnterpriseProjectService {
     }
 
     public List<Project> findAllProjects() {
-        String query = "SELECT p from Project p WHERE 1=1 ORDER BY p.title";
+        String query = "SELECT p from Project p ORDER BY p.title";
         TypedQuery<Project> queryObj = entityManager.createQuery(query,Project.class);
         return queryObj.getResultList();
     }

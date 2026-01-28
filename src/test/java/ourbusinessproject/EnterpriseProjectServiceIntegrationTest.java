@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +19,8 @@ class EnterpriseProjectServiceIntegrationTest {
 
     @Autowired
     private EnterpriseProjectService enterpriseProjectService;
+    @Autowired
+    private Bootstrap bootstrap;
 
     private Enterprise enterprise;
     private Project project;
@@ -117,20 +120,44 @@ class EnterpriseProjectServiceIntegrationTest {
         // given an enterprise
 
         // and three persisted projects
-        enterpriseProjectService.newProject("p1", "p1 description", enterprise);
-        enterpriseProjectService.newProject("p3", "p3 description", enterprise);
-        enterpriseProjectService.newProject("p2", "p2 description", enterprise);
+        enterpriseProjectService.newProject("_p1", "p1 description", enterprise);
+        enterpriseProjectService.newProject("_p3", "p3 description", enterprise);
+        enterpriseProjectService.newProject("_p2", "p2 description", enterprise);
 
         // when searching for all projects
         List<Project> projects = enterpriseProjectService.findAllProjects();
 
         // then the three projects are fetched
+        assertEquals(6, projects.size());// 3 + 3 from bootstrap
+
+        System.out.println(projects.stream().map(Project::getTitle).collect(Collectors.toList()));
+
+        // and projects are sorted by title
+        assertEquals("_p1", projects.get(0).getTitle());
+        assertEquals("_p2", projects.get(1).getTitle());
+        assertEquals("_p3", projects.get(2).getTitle());
+    }
+
+    @Test
+    public void testFindAllProjectsFromInitialization() {
+        // Given the initialization service of the bootstrap component
+        InitializationService initializationService = bootstrap.getInitializationService();
+
+        // when searching for all projects
+        List<Project> projects = enterpriseProjectService.findAllProjects();
+
+        // then three projects are fetched
         assertEquals(3, projects.size());
 
         // and projects are sorted by title
-        assertEquals("p1", projects.get(0).getTitle());
-        assertEquals("p2", projects.get(1).getTitle());
-        assertEquals("p3", projects.get(2).getTitle());
+        assertEquals(initializationService.getProject1E1().getTitle(),projects.get(0).getTitle());
+        assertEquals(initializationService.getProject1E2().getTitle(),projects.get(1).getTitle());
+        assertEquals(initializationService.getProject2E1().getTitle(),projects.get(2).getTitle());
+
+        // and projects have the good enterprise affected
+        assertEquals(initializationService.getEnterprise1().getName(),projects.get(0).getEnterprise().getName());
+        assertEquals(initializationService.getEnterprise2().getName(),projects.get(1).getEnterprise().getName());
+        assertEquals(initializationService.getEnterprise1().getName(),projects.get(2).getEnterprise().getName());
 
     }
 }
