@@ -8,7 +8,7 @@ elle sera étudiée dans la 2ème partie.
 
 ## 1. Classe Project
 
-1. Depuis votre IDE, créez la classe du domaine «ourbusinessproject.Project » (il s'agit de créer une classe Java « standard »).
+1. Depuis votre IDE, créez la classe du domaine «ourbusinessproject.domain.Project » (il s'agit de créer une classe Java « standard »).
 
 2. Créez la classe de test associée à la classe du domaine «Project» en spécifiant :
     - Junit5 comme Testing library,
@@ -26,7 +26,7 @@ http://docs.oracle.com/javaee/6/tutorial/doc/gircz.html
 
 ## 2. Classe Enterprise
 
-Créez la classe du domaine «ourbusinessproject.Enterprise» en suivant la même démarche que pour la classe Project. Le contenu de la classe EnterpriseTest se trouve ici :  
+Créez la classe du domaine «ourbusinessproject.domain.Enterprise» en suivant la même démarche que pour la classe Project. Le contenu de la classe EnterpriseTest se trouve ici :  
 https://gist.github.com/FranckSilvestre/fe2596ff0b9b433deeb44c044061bc25
 
 > fix #1.2 classe Enterprise

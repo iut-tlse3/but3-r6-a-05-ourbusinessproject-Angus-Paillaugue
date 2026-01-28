@@ -3,6 +3,9 @@ package ourbusinessproject;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ourbusinessproject.domain.Enterprise;
+import ourbusinessproject.domain.Project;
+import ourbusinessproject.service.EnterpriseProjectService;
 
 @Service
 public class InitializationService {

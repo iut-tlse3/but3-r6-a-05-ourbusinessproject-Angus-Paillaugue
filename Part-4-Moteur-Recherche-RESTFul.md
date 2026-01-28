@@ -4,7 +4,7 @@
 
 Un partenariat décrit le partenariat réalisé par une entreprise sur un projet. Un projet est donc proposé par une entreprise mais peut faire l'objet de plusieurs partenariats, c'est à dire de plusieurs entreprises partenaires intervenant sur le projet de différentes manières.
 
-1. Créez la classe du domaine «ourbusinessproject.Partnership » et la classe de test associée « PartnershipTest ».
+1. Créez la classe du domaine «ourbusinessproject.domain.Partnership » et la classe de test associée « PartnershipTest ».
 
 2. Modifiez le contenu du fichier « PartnershipTest .java»  de telle sorte qu'il soit identique aux contenus disponibles ici :
    https://gist.github.com/FranckSilvestre/21a575ff0da1eabb40df5fb63b31ae8e

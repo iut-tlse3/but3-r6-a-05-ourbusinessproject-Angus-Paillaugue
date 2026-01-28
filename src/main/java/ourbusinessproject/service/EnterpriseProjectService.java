@@ -1,13 +1,14 @@
-package ourbusinessproject;
+package ourbusinessproject.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import ourbusinessproject.domain.Enterprise;
+import ourbusinessproject.domain.Project;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service

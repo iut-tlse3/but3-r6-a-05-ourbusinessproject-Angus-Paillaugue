@@ -1,4 +1,4 @@
-package ourbusinessproject;
+package ourbusinessproject.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

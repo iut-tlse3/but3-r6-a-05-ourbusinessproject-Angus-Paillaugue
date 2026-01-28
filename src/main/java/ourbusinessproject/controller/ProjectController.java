@@ -1,7 +1,9 @@
-package ourbusinessproject;
+package ourbusinessproject.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ourbusinessproject.domain.Project;
+import ourbusinessproject.service.EnterpriseProjectService;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
 public class ProjectController {
     private final EnterpriseProjectService enterpriseProjectService;
 
-    ProjectController(EnterpriseProjectService enterpriseProjectService) {
+    public ProjectController(EnterpriseProjectService enterpriseProjectService) {
         this.enterpriseProjectService = enterpriseProjectService;
     }
 

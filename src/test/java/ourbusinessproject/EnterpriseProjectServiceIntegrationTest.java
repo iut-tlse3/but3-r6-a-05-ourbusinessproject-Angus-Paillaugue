@@ -7,6 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import ourbusinessproject.domain.Enterprise;
+import ourbusinessproject.domain.Project;
+import ourbusinessproject.service.EnterpriseProjectService;
 
 import java.util.List;
 import java.util.stream.Collectors;
