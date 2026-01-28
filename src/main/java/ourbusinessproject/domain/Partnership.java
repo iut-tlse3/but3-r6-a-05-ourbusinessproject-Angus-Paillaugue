@@ -2,7 +2,6 @@ package ourbusinessproject.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.Date;
 
 @Entity
@@ -20,7 +19,7 @@ public class Partnership {
     private Enterprise enterprise;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     private Project project;
 
     public void setCreationDate(Date date) {

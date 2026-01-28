@@ -2,6 +2,7 @@ package ourbusinessproject.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import ourbusinessproject.domain.Enterprise;
 import ourbusinessproject.domain.Partnership;
@@ -14,11 +15,13 @@ public class PartnershipService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void remove(Partnership partnership) {
         this.entityManager.remove(partnership);
         this.entityManager.flush();
     }
 
+    @Transactional
     public Partnership newPartnership(Project project, Enterprise partnerEnterprise) {
         Project managedProject = this.entityManager.merge(project);
         Enterprise managedEnterprise = this.entityManager.merge(partnerEnterprise);
