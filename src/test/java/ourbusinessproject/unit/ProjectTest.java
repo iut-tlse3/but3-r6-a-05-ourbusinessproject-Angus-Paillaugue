@@ -1,4 +1,4 @@
-package ourbusinessproject;
+package ourbusinessproject.unit;
 
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ourbusinessproject.domain.Enterprise;
 import ourbusinessproject.domain.Project;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)

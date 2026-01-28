@@ -1,4 +1,4 @@
-package ourbusinessproject;
+package ourbusinessproject.unit;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ourbusinessproject.controller.ProjectController;
 import ourbusinessproject.service.EnterpriseProjectService;
-
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)

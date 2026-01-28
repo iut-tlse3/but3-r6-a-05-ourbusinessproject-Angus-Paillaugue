@@ -16,7 +16,7 @@ public class Partnership {
     private Date creationDate;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     private Enterprise enterprise;
 
     @NotNull

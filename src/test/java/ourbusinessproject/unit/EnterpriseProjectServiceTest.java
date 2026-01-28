@@ -1,4 +1,4 @@
-package ourbusinessproject;
+package ourbusinessproject.unit;
 
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,8 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ourbusinessproject.domain.Enterprise;
 import ourbusinessproject.domain.Project;
 import ourbusinessproject.service.EnterpriseProjectService;
-
-
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)

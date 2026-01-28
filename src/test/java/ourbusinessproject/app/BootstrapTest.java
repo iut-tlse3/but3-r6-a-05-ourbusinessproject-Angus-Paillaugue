@@ -1,11 +1,12 @@
-package ourbusinessproject;
+package ourbusinessproject.app;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
+import ourbusinessproject.Bootstrap;
+import ourbusinessproject.InitializationService;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.willThrow;
 import static org.mockito.Mockito.verify;
@@ -33,8 +34,9 @@ class BootstrapTest {
         // when the init method is triggered
         bootstrap.init();
 
-        // then the initialization of projects is triggered on the initialization service
+        // then the initialization of projects and partnerships is triggered on the initialization service
         verify(initializationService).initProjects();
+        verify(initializationService).initPartnerships();
     }
 
     @Test

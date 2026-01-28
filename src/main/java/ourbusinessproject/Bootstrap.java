@@ -14,7 +14,7 @@ public class Bootstrap {
     @Autowired
     private InitializationService initService;
 
-    Bootstrap(InitializationService initService) {
+    public Bootstrap(InitializationService initService) {
         this.initService = initService;
     }
 
@@ -22,6 +22,7 @@ public class Bootstrap {
     public void init() {
         try {
             this.initService.initProjects();
+            this.initService.initPartnerships();
         } catch (RuntimeException e) {
             Logger.getLogger("bootstrap").warning("An error has been thrown when initializing bootstrap :\n"+ Arrays.toString(e.getStackTrace()));
         }
