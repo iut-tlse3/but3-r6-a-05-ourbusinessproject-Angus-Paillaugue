@@ -17,6 +17,8 @@ public class InitializationService {
 
     @Transactional
     public void initProjects() {
+        // Since this method is Transactional, all statements inside are run in a single transaction.
+        // This means that if any fail, all will be rolled back (or commited if they are all successful)
         this.e1 = this.enterpriseProjectService.newEnterprise("Enterprise 1","this is enterprise 1", "Enterprise 1", "contact@enterpise1.com");
         this.e2 = this.enterpriseProjectService.newEnterprise("Enterprise 2","this is enterprise 2", "Enterprise 2", "contact@enterpise2.com");
         this.p1e1 = this.enterpriseProjectService.newProject("~Project 1 of enterprise 1", "This is the description of the project 1 of enterprise 1", this.e1);
