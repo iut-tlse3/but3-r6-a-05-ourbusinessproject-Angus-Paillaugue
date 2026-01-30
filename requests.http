@@ -1,0 +1,19 @@
+### Filter by project name
+GET http://localhost:8080/api/v1/partnerships?enterprise_name=airbus
+Accept: application/json
+
+### Filter by enterprise name
+GET http://localhost:8080/api/v1/partnerships?project_name=fence&enterprise_name=airbus
+Accept: application/json
+
+### All partnerships
+GET http://localhost:8080/api/v1/partnerships
+Accept: application/json
+
+### Pagination
+GET http://localhost:8080/api/v1/partnerships?page=1&page_size=1
+Accept: application/json
+
+### Sort by project name descending
+GET http://localhost:8080/api/v1/partnerships?sort_by=PROJECT_TITLE&order=DESC
+Accept: application/json

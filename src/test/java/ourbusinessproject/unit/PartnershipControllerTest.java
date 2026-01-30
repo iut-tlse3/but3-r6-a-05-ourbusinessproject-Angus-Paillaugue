@@ -12,6 +12,9 @@ import ourbusinessproject.domain.Partnership;
 import ourbusinessproject.domain.Project;
 import ourbusinessproject.service.EnterpriseProjectService;
 import ourbusinessproject.service.PartnershipService;
+
+import java.util.List;
+
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -61,5 +64,11 @@ public class PartnershipControllerTest {
         verify(partnershipService).findPartnershipById(1L);
         verify(partnershipService).remove(nullable(Partnership.class));
     }
+
+//    @Test
+//    public void testSearchPartnershipWithProjectTitle() {
+//        List<Partnership> searchResults = partnershipController.searchPartnerships("Project 1", "");
+//
+//    }
 
 }

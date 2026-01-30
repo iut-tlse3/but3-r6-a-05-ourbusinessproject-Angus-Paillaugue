@@ -22,7 +22,7 @@ class EnterpriseProjectServiceTest {
     private Project project;
     private Enterprise enterprise;
 
-    private Long anId = 1L;
+    private final Long anId = 1L;
 
     @BeforeEach
     public void setUp() throws Exception {
