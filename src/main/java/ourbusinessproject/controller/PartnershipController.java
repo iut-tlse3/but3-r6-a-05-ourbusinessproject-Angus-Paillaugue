@@ -27,11 +27,11 @@ public class PartnershipController {
     }
 
     @PostMapping
-    public ResponseEntity<Partnership> addPartnership(@RequestParam("project_id") Long projectId, @RequestParam("enterprise_id") long enterpriseId) {
+    public Partnership addPartnership(@RequestParam("project_id") Long projectId, @RequestParam("enterprise_id") long enterpriseId) {
         Enterprise enterprise = this.enterpriseProjectService.findEnterpriseById(enterpriseId);
         Project project = this.enterpriseProjectService.findProjectById(projectId);
         Partnership partnership = this.partnershipService.newPartnership(project, enterprise);
-        return ResponseEntity.ok(partnership);
+        return partnership;
     }
 
     @DeleteMapping(path = "/{id}")
@@ -54,7 +54,7 @@ public class PartnershipController {
 
 
     @GetMapping
-    public ResponseEntity<List<Partnership>> searchPartnerships(
+    public List<Partnership> searchPartnerships(
             @RequestParam(name="project_name", required = false) String projectName,
             @RequestParam(name="enterprise_name", required = false) String enterpriseName,
             @RequestParam(name="page", required = false) Integer page,
@@ -66,7 +66,6 @@ public class PartnershipController {
         page = (page != null && page >= 0) ? page : 0;
         sort_by = (sort_by != null) ? sort_by : PartnershipService.SORT_BY.DATE;
         sort_order = (sort_order != null) ? sort_order : PartnershipService.SORT_ORDER.DESC;
-        List<Partnership> searchResults = this.partnershipService.searchPartnerships(projectName, enterpriseName, page, page_size, sort_by, sort_order);
-        return ResponseEntity.ok(searchResults);
+        return this.partnershipService.searchPartnerships(projectName, enterpriseName, page, page_size, sort_by, sort_order);
     }
 }

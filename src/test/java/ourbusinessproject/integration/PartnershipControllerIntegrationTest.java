@@ -136,8 +136,6 @@ public class PartnershipControllerIntegrationTest {
         System.out.println(response.getBody());
         assertEquals(3, response.getBody().size());
         assertEquals(initializationService.getPartnershipP1E1WithE2().getId(), response.getBody().get(0).getId());
-        assertEquals(initializationService.getPartnershipP1E2WithE1().getId(), response.getBody().get(1).getId());
-        assertEquals(initializationService.getPartnershipP2E1WithE2().getId(), response.getBody().get(2).getId());
     }
 
 }

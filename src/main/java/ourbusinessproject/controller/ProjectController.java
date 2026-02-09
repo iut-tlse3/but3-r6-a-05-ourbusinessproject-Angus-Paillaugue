@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ourbusinessproject.domain.Project;
 import ourbusinessproject.service.EnterpriseProjectService;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class ProjectController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Project>> findAllProjectsWithEnterprises() {
-        return ResponseEntity.ok(this.enterpriseProjectService.findAllProjects());
+    public Collection<Project> findAllProjectsWithEnterprises() {
+        return this.enterpriseProjectService.findAllProjects();
     }
 }

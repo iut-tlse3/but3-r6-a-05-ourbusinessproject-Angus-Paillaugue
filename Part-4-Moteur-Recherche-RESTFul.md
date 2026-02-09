@@ -60,7 +60,7 @@ Créez les deux classes de tests PartnershipControllerTest et PartnershipControl
 Nous allons à présent mettre en place un moteur de recherche sur les Partnerships.
 
 On souhaite mettre en place un Web service REST qui permet de retrouver une liste de partenariats correspondant aux critères de recherche suivants : 
-titre du projet : paramètre de requête «project_title »
+titre du projet : paramètre de requête « project_title »
 nom de l'entreprise : paramètre de requête « enterprise_name ».
 Si aucun paramètre n'est fourni dans la requête, on remonte tous les partenariats.
 
